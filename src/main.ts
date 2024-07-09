@@ -4,6 +4,7 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import routeConfig from './app/app-routing/app-routing.module';
 
+
 // bootstrapApplication(AppComponent, appConfig)
 //   .catch((err) => console.error(err));
 
