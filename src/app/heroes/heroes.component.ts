@@ -30,8 +30,12 @@ export class HeroesComponent {
   //   this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`)
   // }
 
+  // getHeroes(): void {
+  //   this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  // }
+
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
 
 }
