@@ -7,13 +7,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HeroService } from '../hero.service';
+import { RouterModule } from '@angular/router';
 
 // import { HeroesComponent } from '../heroes/heroes.component';
 
 @Component({
   selector: 'app-hero-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })
@@ -33,10 +34,17 @@ export class HeroDetailComponent {
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
-      .then(hero => this.hero = hero);
+      .subscribe(hero => this.hero = hero);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 }
